@@ -1,39 +1,30 @@
 $(document).ready(function() {
-	var order = 0;
-	var start = $("img:first").attr("order");
-	var end = $("img:last").attr("order");
-    var next;
-    var prev;
-	$("img").each(function(){
-		if($(this).is(':visible')){
-			order = $(this).attr("order");
-		}
-	})
-    $("#next").click(function(){
-        $("ul>li").eq(order).removeClass("active");
-        order++;
-    	if(order > end){
-    		order = start;
-    	}
-    	$("img").hide();
-    	$("img").eq(order).show();
-        $("ul>li").eq(order).addClass("active");
-    	// $("img").fadeOut();
-    	// $("img").eq(next).fadeIn();
-    });
-    
-    $("#prev").click(function(){
-        $("ul>li").eq(order).removeClass("active");
-        order--;
-    	if(order < start){
-    		order = end;
-    	}
-    	$("img").hide();
-    	$("img").eq(order).show();
-        $("img").eq(order).addClass("active");
-        $("ul>li").eq(order).addClass("active");
+    var imagesURLs = new Array();
+    var intervalId;
+    var btnStart = $("#start_slideshow");
+    var btnStop = $("#stop_slideshow");
+    $("#thumbnail_container img").each(function() {
+        imagesURLs.push($(this).attr("src"));
     })
-})
 
-// <li onclick="getPaging(this.value)" id="1" value="1">1</li>
-// <li onclick="getPaging(this.value)" id="2" value="2">2</li>
+    function setImage() {
+        var mainImageElement = $("#main_image");
+        var currentImageURL = mainImageElement.attr("src");
+        var currentImageIndex = $.inArray(currentImageURL, imagesURLs);
+        if (currentImageIndex == (imagesURLs.length - 1)) {
+            currentImageIndex = -1;
+        }
+        mainImageElement.attr("src", imagesURLs[currentImageIndex + 1]);
+    }
+
+    btnStart.click(function() {
+        intervalId = setInterval(setImage, 500);
+        $(this).attr("disabled", "disabled");
+        btnStop.removeAttr("disabled");
+    })
+    btnStop.click(function() {
+        clearInterval(intervalId);
+        $(this).attr("disabled", "disabled");
+        btnStart.removeAttr("disabled");
+    }).attr("disabled", "disabled");
+})

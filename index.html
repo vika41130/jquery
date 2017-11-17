@@ -1,27 +1,39 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>slider jquery</title>
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/run.js"></script>
-	<link rel="stylesheet" href="css/style.css">
+    <title>slider jquery</title>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/run.js"></script>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-<div id="wrapper">
-	<a href="#" id="next">Next</a>
-	<a href="#" id="prev">Prev</a>
-	<img src="image/kr100.jpg" alt="" order="0">
-	<img src="image/kr101.jpg" alt="" order="1" class="display_none">
-	<img src="image/kr102.jpg" alt="" order="2" class="display_none">
-	<img src="image/kr103.png" alt="" order="3" class="display_none">
-	<img src="image/kr106.jpg" alt="" order="4" class="display_none">
-	<ul>
-		<li class="active">1</li>
-		<li>2</li>
-		<li>3</li>
-		<li>4</li>
-		<li>5</li>
-	</ul>
-</div>
+    <div id="wrapper">
+        <!-- <button id="start_slideshow">Start slideshow</button> -->
+        <!-- <button id="stop_slideshow">Stop slideshow</button> -->
+        <div id="slider">
+            <div id="main_image">
+                <img src="image/kr100.jpg" alt="">
+                <div id="arrow_left">
+                	<img src="left-arrow.png" alt="">
+                </div>
+                <div id="arrow_right">
+                	<img src="right-arrow.png" alt="">                	
+                </div>
+            </div>
+            <div id="thumbnail_container">
+            	<ul>
+            		<li><img src="image/kr100.jpg" alt="" class="thumbnail"></li>
+            		<li><img src="image/kr101.jpg" alt="" class="thumbnail"></li>
+            		<li><img src="image/kr122.jpg" alt="" class="thumbnail"></li>
+            		<li><img src="image/kr202.jpg" alt="" class="thumbnail"></li>
+            		<li><img src="image/kr37.jpg" alt="" class="thumbnail"></li>
+            	</ul>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
