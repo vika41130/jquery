@@ -3,4 +3,6 @@
 .lt()
 .gt()
 filter/attr
+.fadeIn()
+.hide()
 
